@@ -1,0 +1,131 @@
+vnets:
+  - name: workload1
+    rg: rg-network
+    location: uksouth
+    address_space: ["10.60.0.0/19"]
+    subnets:
+      - name: sn1
+        cidr: "10.60.0.0/24"
+        service_delegation: false
+        service_delegation_name: ""
+        nsgs:
+          - name: nsg1
+            nsgrules:
+              - name: AllowHTTP
+                priority: 100
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 80
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowHTTPS
+                priority: 110
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 443
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowSSH
+                priority: 120
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 22
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowPGSQL
+                priority: 130
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 5432
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+
+  - name: workload2
+    rg: rg-network
+    location: uksouth
+    address_space: ["10.60.1.0/19"]
+    subnets:
+      - name: sn1
+        cidr: "10.60.1.0/24"
+        service_delegation: false
+        service_delegation_name: ""
+        nsgs:
+          - name: nsg2
+            nsgrules:
+              - name: AllowHTTP
+                priority: 100
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 80
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowHTTPS
+                priority: 110
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 443
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowSSH
+                priority: 120
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 22
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+              - name: AllowPGSQL
+                priority: 130
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                sourcePortRange: "*"
+                destinationPortRange: 5432
+                sourceAddressPrefix: "*"
+                destinationAddressPrefix: "*"
+
+ 
+
+  # - name: vnet2
+  #   rg: rg-network
+  #   location: uksouth
+  #   address_space: ["10.1.0.0/16"]
+  #   subnets:
+  #     - name: test-subnet3
+  #       cidr: "10.1.0.0/24"
+  #       service_delegation: true
+  #       service_delegation_name: "Microsoft.Web/serverFarms"
+  #       nsgs:
+  #         - name: nsg2a
+  #           nsgrules:
+  #             - name: AllowHTTP
+  #               priority: 100
+  #               direction: Inbound
+  #               access: Allow
+  #               protocol: Tcp
+  #               sourcePortRange: "*"
+  #               destinationPortRange: 80
+  #               sourceAddressPrefix: "*"
+  #               destinationAddressPrefix: "*"
+  #             - name: AllowHTTPS
+  #               priority: 110
+  #               direction: Inbound
+  #               access: Allow
+  #               protocol: Tcp
+  #               sourcePortRange: "*"
+  #               destinationPortRange: 443
+  #               sourceAddressPrefix: "*"
+  #               destinationAddressPrefix: "*"
