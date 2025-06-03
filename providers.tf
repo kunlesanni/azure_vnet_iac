@@ -1,5 +1,5 @@
 terraform {
-/*  # If using Terraform Cloud, configure the backend to here
+  /*  # If using Terraform Cloud, configure the backend to here
   cloud {
     organization = "your_terraform_organization"
     workspaces {
@@ -34,3 +34,4 @@ provider "azurerm" {
   }
   subscription_id = "15082201-a671-4e77-b701-c2f9ffb6d1ac"
 }
+
